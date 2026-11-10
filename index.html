@@ -104,9 +104,12 @@ nav{
   display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:start;
 }
 @media(max-width:680px){.bio-grid{grid-template-columns:1fr;gap:2rem;}}
+.bio-frame{position:relative;max-width:241px;}
+.bio-frame svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;}
+.bio-frame path{vector-effect:non-scaling-stroke;}
 .bio-photo{
-  width:100%;max-width:255px;aspect-ratio:255/454;object-fit:cover;object-position:center top;
-  border:1px solid rgba(232,228,216,.09);border-radius:16px;
+  width:100%;aspect-ratio:241/440;object-fit:cover;object-position:center top;
+  clip-path:url(#bio-clip);
   filter:grayscale(12%);transition:filter .4s;display:block;
 }
 .bio-photo:hover{filter:grayscale(0%);}
@@ -345,7 +348,10 @@ footer{
 
   <div class="about-section">
     <div class="bio-grid">
-      <img class="bio-photo reveal" src="pic/about.png" alt="Fabio Marchianò">
+      <div class="bio-frame reveal">
+        <img class="bio-photo" src="pic/about.png" alt="Fabio Marchianò">
+        <svg viewBox="0 0 238 410" preserveAspectRatio="none" fill="none" stroke="#e8e4d8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><clipPath id="bio-clip" clipPathUnits="objectBoundingBox"><path d="M0.0102 0.0093C0.3387 0.0015 0.6536 0.0105 0.9841 0.0099C0.9957 0.3366 0.9763 0.6641 0.9909 0.9934C0.6547 0.9965 0.3355 0.9862 0.0126 0.9898C0.0010 0.6652 0.0198 0.3414 0.0103 0.0093Z"/></clipPath><path stroke-width="1.5" d="M-3.1 4.1C79.6 0.3 158.4 4.6 241.7 4M234.1 -0.8C237.1 136.3 232.2 273.7 236 411.9M241.8 407.1C158.4 408.8 79.6 404.2 -0.4 405.9M3.1 411.4C0.1 273.7 4.9 136.3 2.3 -4.8"/><path stroke-width=".9" opacity=".75" d="M-0.9 1.6C79.6 7.7 158.4 -1.7 241.3 3M233.7 -0.6C238.1 136.3 231.1 273.7 232.8 412.6M241.4 408.4C158.4 402.7 79.6 411 -4.4 409.4M3.5 412.6C-0.7 273.7 7.5 136.3 1.2 -4.1"/></svg>
+      </div>
       <div class="bio-body reveal">
         <p>Hi, I'm Fabio! A scientist who escaped the lab ☀️</p>
         <p>I build things: bioinformatics pipelines, interactive data tools and occasionally a website that does something it probably shouldn't.</p>
@@ -806,8 +812,57 @@ function collagen(pts,parent,r=.015){
   return c;
 }
 
-function buildCell(p){
+// Monitor and small keyboard, returns the group the cell goes in. Front of the shell is open so the cell shows through.
+function buildComputer(parent){
+  const g=new T.Group();
+  g.position.y=.18;g.rotation.set(.1,-.3,0);g.scale.setScalar(.95);parent.add(g);
+  const HW=1.2,HH=.92,F=.4,B=-.66,K=.72;
+  const rr=(S,hw,hh,r)=>{
+    S.moveTo(-hw+r,-hh);S.lineTo(hw-r,-hh);S.quadraticCurveTo(hw,-hh,hw,-hh+r);
+    S.lineTo(hw,hh-r);S.quadraticCurveTo(hw,hh,hw-r,hh);
+    S.lineTo(-hw+r,hh);S.quadraticCurveTo(-hw,hh,-hw,hh-r);
+    S.lineTo(-hw,-hh+r);S.quadraticCurveTo(-hw,-hh,-hw+r,-hh);
+    return S;
+  };
+  const outer=rr(new T.Shape(),HW,HH,.09),inner=rr(new T.Path(),HW-.15,HH-.15,.05);
+  const trace=(S,z)=>rod(S.getSpacedPoints(200).slice(0,-1).map(q=>V(q.x,q.y,z)),g,.0065,vizMat.cream,true);
+  outer.holes.push(inner);
+  const bezel=new T.Mesh(new T.ExtrudeGeometry(outer,{depth:.12,bevelEnabled:false,curveSegments:8}),vizMat.fill);
+  bezel.position.z=F;g.add(bezel);
+  trace(outer,F+.12);trace(inner,F+.12);trace(outer,F);
+  const box=new T.BoxGeometry(HW*1.96,HH*1.96,F-B),a=box.attributes.position,side=new T.MeshBasicMaterial({color:0x0e0e10,side:T.DoubleSide});
+  for(let i=0;i<a.count;i++)if(a.getZ(i)<0)a.setXYZ(i,a.getX(i)*K,a.getY(i)*K,a.getZ(i));
+  box.translate(0,0,(F+B)/2);
+  const open=[side,side,side,side,new T.MeshBasicMaterial({visible:false}),side];
+  g.add(new T.Mesh(box,open));
+  const liner=new T.Mesh(box,open); // keeps the outer edges from showing through the screen
+  liner.scale.set(.97,.97,.97);g.add(liner);
+  [[1,1],[-1,1],[-1,-1],[1,-1]].forEach(([x,y],i,c)=>{
+    const [u,v]=c[(i+1)%4],far=(a,b)=>V(a*HW*1.01*K,b*HH*1.01*K,B);
+    rod([V(x*HW*.97,y*HH*.97,F),far(x,y)],g,.0065);
+    rod([far(x,y),far(u,v)],g,.0065);
+  });
+  // keyboard hangs off the bottom edge of the monitor, tilted up at the viewer
+  const kb=new T.Group();
+  kb.position.set(0,-HH-.01,F+.08);kb.rotation.x=.95;kb.scale.setScalar(.85);g.add(kb);
+  const block=(w,h,d,pos)=>{ // normals along the corners keep the hull closed around a box
+    const b=new T.BoxGeometry(w,h,d),q=b.attributes.position,n=b.attributes.normal;
+    for(let i=0;i<q.count;i++)n.setXYZ(i,Math.sign(q.getX(i)),Math.sign(q.getY(i)),Math.sign(q.getZ(i)));
+    ink(b,kb,{pos});
+  };
+  block(1.56,.05,.62,V(0,0,.33));
+  const hinge=new T.CylinderGeometry(.035,.035,.9,16);
+  hinge.rotateZ(Math.PI/2);
+  ink(hinge,kb);
+  for(let r=0;r<3;r++)for(let i=0;i<12;i++)block(.096,.022,.096,V((i-5.5)*.118+(r-1)*.03,.05,.1+r*.125));
+  block(.56,.022,.096,V(0,.05,.475));
+  return g;
+}
+
+function buildCell(root){
   vizSeed(11);
+  const pc=buildComputer(root),p=new T.Group();
+  p.scale.set(.8,.8,.5);pc.add(p);
   const mem=new T.SphereGeometry(1,72,54),a=mem.attributes.position;
   for(let i=0;i<a.count;i++){
     const x=a.getX(i),y=a.getY(i),z=a.getZ(i),k=1+.035*Math.sin(3*x+1)*Math.cos(2.4*y+z);
@@ -841,10 +896,11 @@ function buildCell(p){
   const link=arc(V(.4,.4,.34),V(-.02,.34,.32),V(.02,.24,.12));
   arc(V(.14,-.54,.34),V(-.14,-.2,.34),V(.14,.08,.1));
   arc(V(.57,-.12,.42),V(.1,.05,.26),V(.05,-.14,.1));
+  p.updateWorldMatrix(true,false);
   return {
-    nucleus:nc.clone().add(V(-.17,.17,.36).normalize().multiplyScalar(nr+.01)),
-    mito:V(.66,-.14,.45),
-    link:link.getPoint(.5)
+    nucleus:p.localToWorld(nc.clone().add(V(-.17,.17,.36).normalize().multiplyScalar(nr+.01))),
+    mito:p.localToWorld(V(.66,-.14,.45)),
+    link:p.localToWorld(link.getPoint(.5))
   };
 }
 
