@@ -5,7 +5,7 @@ Single-file personal site for Fabio Marchianò (PhD computational biology, bioin
 Live at: https://fmarchiano.github.io/masterclass/
 Single source of truth: `index.html` (~450 lines, all CSS + JS inline, zero build tools)
 
-Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Two pages only: Home and Publications.
+Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Three pages: Home, Publications, Where I Am.
 
 ## Owner
 - Name: Fabio Marchianò
@@ -20,11 +20,11 @@ Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com —
 
 1. **Single file** — everything stays in `index.html`. No separate CSS, JS or HTML files.
 2. **Zero frameworks** — vanilla JS only.
-3. **Google Fonts is the only CDN** — Jost only.
+3. **Google Fonts is the only CDN** — Jost only. Sole exception: jsDelivr with pinned versions (globe.gl, topojson-client, world-atlas), loaded only when "Where I Am" first opens. Home and Publications load nothing from it.
 4. **Palette**: `--cyan:#00f5ff` · `--b:#0a0a0a` · `--b2:#111114` · `--w:#e8e4d8` · `--dim`/`--dim2` (translucent white). No per-page accents anymore — single page, single accent.
 5. **No i18n** — copy is English only. Do not reintroduce `data-i18n` / `T.en` machinery.
-6. **Canvas guards** — n/a, no canvases in current design.
-7. **Routing** — `showPage(id)` toggles `.active` on `.page` divs. Currently `page-home` and `page-publications`. New pages must follow this pattern and get a nav link.
+6. **Canvas guards** — only canvas is the globe on `page-where`; `showPage()` pauses it when leaving the page.
+7. **Routing** — `showPage(id)` toggles `.active` on `.page` divs. Currently `page-home`, `page-publications` and `page-where`. New pages must follow this pattern and get a nav link.
 8. **No lorem ipsum** — all copy must come from `memory/content-bank.md`.
 9. **Email CTA** — use `<button onclick="copyEmail()">` (copies address, shows toast). No `mailto:` links, no Cal.com (removed).
 10. **Tone** — direct, dry, minimal. No corporate filler ("passionate", "leverage", "cutting-edge").
@@ -51,6 +51,7 @@ Grain overlay:   body::before — SVG feTurbulence texture
 .links-strip            LinkedIn / GitHub / email-copy row
 .pub-wrap / .pub-card   Publications page — year-grouped list of papers
 footer                  Shared footer, LinkedIn/GitHub/Email
+#globe / PLACES         "Where I Am" globe. Add a visited country = one entry in the PLACES array (JS)
 ```
 
 ## Files that must exist alongside index.html
