@@ -630,7 +630,8 @@ async function startGlobe(){
     ]);
     const countries=topojson.feature(world,world.objects.countries).features;
     const visited=countries.filter(d=>PLACES.some(p=>p.id===d.id));
-    const been=countries.filter(d=>d.id in BEEN);
+    const been=countries.filter(d=>d.id in BEEN).map(d=>['250','528'].includes(d.id) // France, Netherlands: mainland only, no overseas territories or Corsica
+      ?{...d,geometry:{...d.geometry,coordinates:d.geometry.coordinates.filter(([[[x,y]]])=>y>40&&x<8.3)}}:d);
     globe=new Globe(document.getElementById('globe'),{animateIn:false})
       .backgroundColor('#000000')
       .showAtmosphere(false)
