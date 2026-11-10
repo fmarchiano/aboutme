@@ -55,8 +55,8 @@ footer                  Shared footer, LinkedIn/GitHub/Email
 ## Files that must exist alongside index.html
 
 ```
-pic/about.gif        Profile GIF (About section)
-pic/about.jpg        Still photo, shown instead when reduced motion is on
+pic/about.png        Profile photo (About section)
+pic/about.jpg        Link-preview image (og:image)
 ```
 
 ---

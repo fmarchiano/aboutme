@@ -105,8 +105,8 @@ nav{
 }
 @media(max-width:680px){.bio-grid{grid-template-columns:1fr;gap:2rem;}}
 .bio-photo{
-  width:100%;max-width:270px;aspect-ratio:9/16;object-fit:cover;object-position:center top;
-  border:1px solid rgba(232,228,216,.09);
+  width:100%;max-width:255px;aspect-ratio:255/454;object-fit:cover;object-position:center top;
+  border:1px solid rgba(232,228,216,.09);border-radius:16px;
   filter:grayscale(12%);transition:filter .4s;display:block;
 }
 .bio-photo:hover{filter:grayscale(0%);}
@@ -327,18 +327,17 @@ footer{
 
   <div class="hero reveal">
     <h1 class="hero-name">Fabio<br>Marchianò, PhD</h1>
-    <p class="hero-sub">Scientist and software engineer in one<br>I build a bioinformatics platform with research-grade rigor</p>
+    <p class="hero-sub">Scientist and software engineer in one</p>
   </div>
 
   <div class="about-section">
     <div class="bio-grid">
-      <picture>
-        <source media="(prefers-reduced-motion:reduce)" srcset="pic/about.jpg">
-        <img class="bio-photo reveal" src="pic/about.gif" alt="Fabio Marchianò">
-      </picture>
+      <img class="bio-photo reveal" src="pic/about.png" alt="Fabio Marchianò">
       <div class="bio-body reveal">
+        <p>Hi, I'm Fabio! A scientist who escaped the lab ☀️</p>
+        <p>I build things: bioinformatics pipelines, interactive data tools and occasionally a website that does something it probably shouldn't.</p>
         <p>I hold a <strong>PhD in health biology (genomics and bioinformatics)</strong> and spent 10 years between academic research and startups all over the globe (Italy, France, UK, USA) working on cancer genomics, immunogenomics, developmental biology and developing bioinformatics tools published in top journals.</p>
-        <p>Full-stack bioinformatics systems engineered with the same rigor as the research behind them, running on private HPCs and cloud infrastructure (AWS).</p>
+        <p>Something you'd like to discuss? Scientific project validity, MVP building, upgrading your platform to production level: get in touch!</p>
       </div>
     </div>
   </div>
