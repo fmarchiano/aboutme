@@ -5,7 +5,7 @@ Single-file personal site for Fabio Marchianò (PhD health biology: genomics and
 Live at: https://fmarchiano.github.io/masterclass/
 Single source of truth: `index.html` (~450 lines, all CSS + JS inline, zero build tools)
 
-Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Three pages: Home, Publications, Where I Am.
+Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Three pages: Home, Publications, Where I Live.
 
 ## Owner
 - Name: Fabio Marchianò
@@ -20,7 +20,7 @@ Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com —
 
 1. **Single file** — everything stays in `index.html`. No separate CSS, JS or HTML files.
 2. **Zero frameworks** — vanilla JS only.
-3. **Google Fonts is the only CDN** — Jost only. Sole exception: jsDelivr with pinned versions, loaded on first open of the page that needs them: globe.gl, topojson-client, world-atlas for "Where I Am"; three.js for the Publications Viz view. Home loads nothing from it.
+3. **Google Fonts is the only CDN** — Jost only. Sole exception: jsDelivr with pinned versions, loaded on first open of the page that needs them: globe.gl, topojson-client, world-atlas for "Where I Live"; three.js for the Publications Viz view. Home loads nothing from it.
 4. **Palette**: `--cyan:#00f5ff` · `--b:#0a0a0a` · `--b2:#111114` · `--w:#e8e4d8` · `--dim`/`--dim2` (translucent white). No per-page accents anymore — single page, single accent.
 5. **No i18n** — copy is English only. Do not reintroduce `data-i18n` / `T.en` machinery.
 6. **Canvas guards** — only canvases are the globe on `page-where` and the Viz object on `page-publications`; `showPage()` pauses each when leaving its page.
@@ -48,7 +48,7 @@ Grain overlay:   body::before — SVG feTurbulence texture
 .bio-grid             Two-col: photo (220px) + bio-body text
 .pub-wrap / .pub-card   Publications page — year-grouped list of papers
 footer                  Shared footer, LinkedIn/GitHub/Email
-#globe / PLACES         "Where I Am" globe. Add a home country = one entry in the PLACES array (JS). Add a "been to" country = one entry in BEEN
+#globe / PLACES         "Where I Live" globe. Add a home country = one entry in the PLACES array (JS). Add a "been to" country = one entry in BEEN. Arrow + "Currently, I'm here" = the `note` field on a PLACES city
 #viz / VIZ              Publications Viz carousel (default view, toggle to List). Slides, short titles and spot assignments = VIZ array (JS); journal, year, first-author and link are read from the List cards
 ```
 

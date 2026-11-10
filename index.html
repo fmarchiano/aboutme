@@ -255,7 +255,7 @@ footer{
   #viz.open .viz-arrow{top:25%;}
 }
 
-/* ── WHERE I AM ── */
+/* ── WHERE I LIVE ── */
 #page-where{padding-top:0;background:#000;}
 #globe{position:fixed;inset:4.5rem 0 0;}
 .where-title{
@@ -277,6 +277,12 @@ footer{
 }
 .gm-city{position:relative;width:0;height:0;pointer-events:none;}
 .gm-pin{position:absolute;left:-10px;bottom:0;width:20px;height:29px;display:block;overflow:visible;}
+.gm-arrow{position:absolute;left:-38px;bottom:33px;width:44px;height:72px;overflow:visible;filter:drop-shadow(0 0 2px #000);}
+.gm-note{
+  position:absolute;left:-31px;bottom:107px;transform:translateX(-50%) rotate(-3deg);
+  font-size:clamp(.8rem,1.5vw,1.15rem);font-weight:500;color:var(--cyan);white-space:nowrap;
+  -webkit-text-stroke:3px #000;paint-order:stroke fill;
+}
 .gm-city-name{
   position:absolute;bottom:9px;
   font-size:clamp(.8rem,2.2vw,1.7rem);font-weight:600;letter-spacing:.02em;
@@ -325,7 +331,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home');return false;" id="nav-home" class="active">Home</a></li>
     <li><a href="#" onclick="showPage('publications');return false;" id="nav-publications">Publications</a></li>
-    <li><a href="#" onclick="showPage('where');return false;" id="nav-where">Where I Am</a></li>
+    <li><a href="#" onclick="showPage('where');return false;" id="nav-where">Where I Live</a></li>
   </ul>
 </nav>
 
@@ -471,9 +477,9 @@ footer{
   </footer>
 </div>
 
-<!-- ══ WHERE I AM ══ -->
+<!-- ══ WHERE I LIVE ══ -->
 <div class="page" id="page-where">
-  <h1 class="section-eyebrow where-title">Where I Am</h1>
+  <h1 class="section-eyebrow where-title">Where I Live</h1>
   <button class="where-been" id="where-been" aria-pressed="false" hidden>Where Have I Been</button>
   <ul class="where-list" id="where-list"></ul>
   <div id="globe" aria-hidden="true"></div>
@@ -517,13 +523,13 @@ document.querySelectorAll('.footer-copy').forEach(el=>{
   el.textContent='© '+new Date().getFullYear()+' Fabio Marchianò';
 });
 
-/* ── WHERE I AM ──
+/* ── WHERE I LIVE ──
    One entry per country. id = ISO 3166 numeric. nameLat/nameLng = printed name, placed outside the country.
    flag: stripes across the country's bounding box, dir 'v' or 'h'; star = [lng,lat,radius] in degrees. */
 const PLACES=[
   {id:'380',name:'ITALY',nameLat:35.5,nameLng:13.5,size:3,rot:0,city:{name:'Verbania',lat:45.92,lng:8.55,side:'right'},
    flag:{dir:'v',stripes:['#009246','#fff','#ce2b37']}},
-  {id:'764',name:'THAILAND',nameLat:10.8,nameLng:86.5,size:3,rot:0,city:{name:'Bangkok',lat:13.75,lng:100.5,side:'left'},
+  {id:'764',name:'THAILAND',nameLat:10.8,nameLng:86.5,size:3,rot:0,city:{name:'Bangkok',lat:13.75,lng:100.5,side:'left',note:"Currently, I'm here"},
    flag:{dir:'h',stripes:['#a51931','#f4f5f8','#2d2a4a','#2d2a4a','#f4f5f8','#a51931']}},
   {id:'704',name:'VIETNAM',nameLat:11.6,nameLng:116.5,size:3,rot:0,city:{name:'Danang',lat:16.05,lng:108.2,side:'right'},
    flag:{dir:'h',stripes:['#da251d'],star:[107.4,13,2.4]}}
@@ -613,7 +619,9 @@ function worldTexture(world,visited){
 function marker(d){
   const el=document.createElement('div');
   el.className=`gm-city gm-${d.side}`;
-  el.innerHTML=`<svg class="gm-pin" viewBox="0 0 20 29"><path fill="#00f5ff" stroke="#000" stroke-width="1.2" stroke-linejoin="round" d="M10 0a10 10 0 0 0-10 10c0 7 10 19 10 19s10-12 10-19a10 10 0 0 0-10-10zm0 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg><span class="gm-city-name">${d.name}</span>`;
+  // Same ink as the Publications Viz: dark fill, cream outline drawn twice by a shaky hand, cyan spot.
+  el.innerHTML=`<svg class="gm-pin" viewBox="0 0 20 29" fill="none" stroke="#e8e4d8" stroke-linecap="round" stroke-linejoin="round"><path fill="#0e0e10" stroke-width="1.5" d="M10.8.5C4.7.1.6 4.5.7 10.3c.2 6.3 5.6 12.5 9.4 18.4 3.5-6 9.4-12.1 9.2-18.7C19.2 4.3 15.4.9 8.9 1"/><path stroke-width=".7" opacity=".55" d="M4 3.6C1.4 6.3 1.3 10 2.2 13c1.4 4.4 4.7 8.5 7.4 12.8M12.7 2.3c3.8 1.3 6 4.3 5.8 8.3"/><circle fill="#00f5ff" stroke="none" cx="10" cy="10.2" r="3.3"/></svg><span class="gm-city-name">${d.name}</span>`
+    +(d.note?`<svg class="gm-arrow" viewBox="0 0 44 72" fill="none" stroke="#00f5ff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 2C2 20 8 34 20 44c8 7 15 14 17.5 25"/><path d="M38 70c-5-3-8.5-7-10-12M38 70c.5-5 2-9 6-12"/></svg><span class="gm-note">${d.note}</span>`:'');
   // hovering needs pointer events on the label; hand drags that start there back to the globe
   el.addEventListener('pointerdown',e=>document.querySelector('#globe canvas').dispatchEvent(new PointerEvent('pointerdown',e)));
   return el;
@@ -621,7 +629,7 @@ function marker(d){
 
 async function startGlobe(){
   const list=document.getElementById('where-list');
-  list.innerHTML=PLACES.map(p=>`<li>${p.city.name}, ${p.name[0]+p.name.slice(1).toLowerCase()}</li>`).join('')+`<li>Been to: ${Object.values(BEEN).join(', ')}</li>`;
+  list.innerHTML=PLACES.map(p=>`<li>${p.city.name}, ${p.name[0]+p.name.slice(1).toLowerCase()}${p.city.note?` (${p.city.note})`:''}</li>`).join('')+`<li>Been to: ${Object.values(BEEN).join(', ')}</li>`;
   try{
     const [,,world]=await Promise.all([
       loadScript(CDN+'globe.gl@2.46.2/dist/globe.gl.min.js'),
