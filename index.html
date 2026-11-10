@@ -105,7 +105,7 @@ nav{
 }
 @media(max-width:680px){.bio-grid{grid-template-columns:1fr;gap:2rem;}}
 .bio-photo{
-  width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;
+  width:100%;max-width:270px;aspect-ratio:9/16;object-fit:cover;object-position:center top;
   border:1px solid rgba(232,228,216,.09);
   filter:grayscale(12%);transition:filter .4s;display:block;
 }
@@ -332,7 +332,10 @@ footer{
 
   <div class="about-section">
     <div class="bio-grid">
-      <img class="bio-photo reveal" src="pic/about.jpg" alt="Fabio Marchianò">
+      <picture>
+        <source media="(prefers-reduced-motion:reduce)" srcset="pic/about.jpg">
+        <img class="bio-photo reveal" src="pic/about.gif" alt="Fabio Marchianò">
+      </picture>
       <div class="bio-body reveal">
         <p>I hold a <strong>PhD in health biology (genomics and bioinformatics)</strong> and spent 10 years between academic research and startups all over the globe (Italy, France, UK, USA) working on cancer genomics, immunogenomics, developmental biology and developing bioinformatics tools published in top journals.</p>
         <p>Full-stack bioinformatics systems engineered with the same rigor as the research behind them, running on private HPCs and cloud infrastructure (AWS).</p>
