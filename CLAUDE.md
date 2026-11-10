@@ -20,10 +20,10 @@ Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com —
 
 1. **Single file** — everything stays in `index.html`. No separate CSS, JS or HTML files.
 2. **Zero frameworks** — vanilla JS only.
-3. **Google Fonts is the only CDN** — Jost only. Sole exception: jsDelivr with pinned versions (globe.gl, topojson-client, world-atlas), loaded only when "Where I Am" first opens. Home and Publications load nothing from it.
+3. **Google Fonts is the only CDN** — Jost only. Sole exception: jsDelivr with pinned versions, loaded on first open of the page that needs them: globe.gl, topojson-client, world-atlas for "Where I Am"; three.js for the Publications Viz view. Home loads nothing from it.
 4. **Palette**: `--cyan:#00f5ff` · `--b:#0a0a0a` · `--b2:#111114` · `--w:#e8e4d8` · `--dim`/`--dim2` (translucent white). No per-page accents anymore — single page, single accent.
 5. **No i18n** — copy is English only. Do not reintroduce `data-i18n` / `T.en` machinery.
-6. **Canvas guards** — only canvas is the globe on `page-where`; `showPage()` pauses it when leaving the page.
+6. **Canvas guards** — only canvases are the globe on `page-where` and the Viz object on `page-publications`; `showPage()` pauses each when leaving its page.
 7. **Routing** — `showPage(id)` toggles `.active` on `.page` divs. Currently `page-home`, `page-publications` and `page-where`. New pages must follow this pattern and get a nav link.
 8. **No lorem ipsum** — all copy must come from `memory/content-bank.md`.
 9. **Email CTA** — use `<button onclick="copyEmail()">` (copies address, shows toast). No `mailto:` links, no Cal.com (removed).
@@ -52,6 +52,7 @@ Grain overlay:   body::before — SVG feTurbulence texture
 .pub-wrap / .pub-card   Publications page — year-grouped list of papers
 footer                  Shared footer, LinkedIn/GitHub/Email
 #globe / PLACES         "Where I Am" globe. Add a visited country = one entry in the PLACES array (JS)
+#viz / VIZ              Publications Viz carousel (default view, toggle to List). Slides, short titles and spot assignments = VIZ array (JS); journal, year, first-author and link are read from the List cards
 ```
 
 ## Files that must exist alongside index.html
