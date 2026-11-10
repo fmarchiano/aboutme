@@ -48,7 +48,7 @@ Grain overlay:   body::before — SVG feTurbulence texture
 .bio-grid             Two-col: photo (220px) + bio-body text
 .pub-wrap / .pub-card   Publications page — year-grouped list of papers
 footer                  Shared footer, LinkedIn/GitHub/Email
-#globe / PLACES         "Where I Am" globe. Add a visited country = one entry in the PLACES array (JS)
+#globe / PLACES         "Where I Am" globe. Add a home country = one entry in the PLACES array (JS). Add a "been to" country = one entry in BEEN
 #viz / VIZ              Publications Viz carousel (default view, toggle to List). Slides, short titles and spot assignments = VIZ array (JS); journal, year, first-author and link are read from the List cards
 ```
 
