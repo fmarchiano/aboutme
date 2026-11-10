@@ -1,7 +1,7 @@
 # CLAUDE.md — Personal Site Project
 
 ## What this project is
-Single-file personal site for Fabio Marchianò (PhD computational biology, bioinformatician, freelance AI/automation).
+Single-file personal site for Fabio Marchianò (PhD health biology: genomics and bioinformatics, bioinformatician, freelance AI/automation).
 Live at: https://fmarchiano.github.io/masterclass/
 Single source of truth: `index.html` (~450 lines, all CSS + JS inline, zero build tools)
 
@@ -43,12 +43,9 @@ Grain overlay:   body::before — SVG feTurbulence texture
 ## Key CSS classes
 
 ```
-.hero                Home hero (name, eyebrow, subtitle)
-.about-section        Bio block: photo + bio-body + facts-grid
+.hero                Home hero (name, subtitle)
+.about-section        Bio block: photo + bio-body
 .bio-grid             Two-col: photo (220px) + bio-body text
-.facts-grid            Bordered grid of labeled facts (research areas, publications, stack, based)
-.services-section      Freelance/AI-automation pitch: intro + services-grid (3 numbered cards) + CTA
-.links-strip            LinkedIn / GitHub / email-copy row
 .pub-wrap / .pub-card   Publications page — year-grouped list of papers
 footer                  Shared footer, LinkedIn/GitHub/Email
 #globe / PLACES         "Where I Am" globe. Add a visited country = one entry in the PLACES array (JS)

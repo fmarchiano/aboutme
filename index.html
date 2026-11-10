@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Fabio Marchianò — bioinformatic platform developer, PhD computational biologist.">
+<meta name="description" content="Fabio Marchianò — bioinformatic platform developer, PhD in health biology.">
 <meta name="theme-color" content="#0a0a0a">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fabio Marchianò">
@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://fmarchiano.github.io/masterclass/pic/about.jpg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fabio Marchianò">
-<meta name="twitter:description" content="Bioinformatic platform developer, PhD computational biologist.">
+<meta name="twitter:description" content="Bioinformatic platform developer, PhD in health biology.">
 <title>Fabio Marchianò</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' font-weight='600' fill='%2300f5ff' text-anchor='middle'%3EFM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,10 +80,6 @@ nav{
   background:radial-gradient(closest-side,rgba(0,245,255,.09),transparent 70%);
   pointer-events:none;z-index:-1;
 }
-.hero-eyebrow{
-  font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:1.6rem;
-}
 .hero-name{
   font-size:clamp(2.8rem,6.5vw,5rem);font-weight:600;
   line-height:1.0;letter-spacing:-.02em;color:var(--w);margin-bottom:1.2rem;
@@ -119,77 +115,6 @@ nav{
 }
 .bio-body strong{color:var(--w);font-weight:500;}
 .bio-body p+p{margin-top:1.1rem;}
-.bio-viva{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--dim);letter-spacing:.02em;}
-
-/* ── FACTS GRID ── */
-.facts-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  border:1px solid rgba(232,228,216,.08);
-  background:var(--b2);
-  margin-top:3rem;
-}
-.fact{
-  padding:1.5rem 1.6rem;
-  border-right:1px solid rgba(232,228,216,.08);
-}
-@media(max-width:680px){
-  .facts-grid{grid-template-columns:1fr 1fr;}
-  .fact:nth-child(even){border-right:none;}
-  .fact{border-bottom:1px solid rgba(232,228,216,.08);}
-}
-.fact-label{
-  font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.55rem;
-}
-.fact-value{font-size:.88rem;font-weight:300;color:var(--dim2);line-height:1.5;font-variant-numeric:tabular-nums;}
-
-/* ── SERVICES SECTION ── */
-.services-section{
-  padding:clamp(2rem,5vh,3.5rem) clamp(1.5rem,5vw,5rem) 0;
-  max-width:1100px;margin:0 auto;
-}
-.services-intro{
-  font-size:1.05rem;font-weight:300;color:var(--dim2);line-height:1.6;
-  max-width:46ch;margin-bottom:2.5rem;
-}
-.services-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:1px;background:rgba(232,228,216,.08);
-  border:1px solid rgba(232,228,216,.08);
-}
-.service{background:var(--b2);padding:1.8rem 1.7rem;}
-.service-num{
-  font-family:'DM Mono',monospace;font-size:.75rem;color:var(--accent);
-  margin-bottom:.9rem;
-}
-.service-title{
-  font-size:1rem;font-weight:600;color:var(--w);letter-spacing:.01em;margin-bottom:.6rem;
-}
-.service-desc{font-size:.86rem;font-weight:300;color:var(--dim2);line-height:1.6;}
-.services-cta{
-  display:inline-block;margin-top:2.2rem;
-  font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--dim2);background:none;border:none;cursor:pointer;padding:0;
-  transition:color .2s;
-}
-.services-cta:hover{color:var(--accent);}
-
-/* ── LINKS STRIP ── */
-.links-strip{
-  display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;
-  padding:2.5rem clamp(1.5rem,5vw,5rem);
-  border-top:1px solid rgba(232,228,216,.07);
-  max-width:1100px;margin:0 auto;
-}
-.links-strip a,.links-strip button{
-  font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--dim2);text-decoration:none;
-  background:none;border:none;cursor:pointer;padding:0;
-  transition:color .2s;
-}
-.links-strip a:hover,.links-strip button:hover{color:var(--accent);}
-.links-strip button:active{opacity:.6;}
-.links-sep{color:var(--dim);font-size:.7rem;}
 
 /* ── FOOTER ── */
 footer{
@@ -401,76 +326,22 @@ footer{
 <div class="page active" id="page-home">
 
   <div class="hero reveal">
-    <p class="hero-eyebrow">Bioinformatic Platform Developer · PhD · Computational Biology</p>
     <h1 class="hero-name">Fabio<br>Marchianò, PhD</h1>
-    <p class="hero-sub">Scientist and software engineer in one — I build bioinformatic platforms with research-grade rigor and production-grade engineering.</p>
+    <p class="hero-sub">Scientist and software engineer in one.<br>I build a bioinformatics platform with research-grade rigor.</p>
   </div>
 
   <div class="about-section">
-    <p class="section-eyebrow">About</p>
     <div class="bio-grid">
       <img class="bio-photo reveal" src="pic/about.jpg" alt="Fabio Marchianò">
       <div class="bio-body reveal">
-        <p>I hold a <strong>PhD in computational biology</strong> and spent 8+ years in academic research — cancer genomics, developmental biology, and bioinformatics tools published in top journals.</p>
+        <p>I hold a <strong>PhD in health biology (genomics and bioinformatics)</strong> and spent 10 years between academic research and startups all over the globe (Italy, France, UK, USA) — cancer genomics, developmental biology, and bioinformatics tools published in top journals.</p>
         <p>I don't just write analysis scripts — I build platforms. Full-stack bioinformatics systems that turn large-scale biological data into tools scientists actually use: precision oncology, mitochondrial dynamics, synthetic plasmid scoring. Engineered with the same rigor as the research behind them, running on private HPCs and cloud infrastructure (AWS).</p>
-        <p>Lead bioinformatician, platform developer and scientific advisor at <strong>Allovista</strong> (US) and <strong>SeCore</strong> (UK), translating research-grade methods into production-ready platforms.</p>
-        <p>Also freelancing now — basically, call me if you get lost. <span class="bio-viva">P.IVA 02856570037</span></p>
       </div>
     </div>
-
-    <div class="facts-grid">
-      <div class="fact reveal">
-        <div class="fact-label">Research areas</div>
-        <div class="fact-value">Computational biology · Cancer genomics · Immunogenomics · Mitochondrial dynamics</div>
-      </div>
-      <div class="fact reveal">
-        <div class="fact-label">Publications</div>
-        <div class="fact-value">10 peer-reviewed papers · 2 first-author · NAR · Scientific Reports · eLife · PNAS</div>
-      </div>
-      <div class="fact reveal">
-        <div class="fact-label">Stack</div>
-        <div class="fact-value">Bash · R · Python · GNU Make / Nextflow · Docker / Apptainer · SLURM · AWS</div>
-      </div>
-      <div class="fact reveal">
-        <div class="fact-label">Based</div>
-        <div class="fact-value">Italy · Vietnam · Thailand · Remote worldwide</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="services-section">
-    <p class="section-eyebrow">Freelance · AI & Automation</p>
-    <p class="services-intro reveal">Cutting through the hype, then shipping the thing.</p>
-    <div class="services-grid">
-      <div class="service reveal">
-        <div class="service-num">01</div>
-        <div class="service-title">Vulgarization</div>
-        <div class="service-desc">Plain-language AI briefings for founders and teams — what it actually does for you, no jargon, no hype.</div>
-      </div>
-      <div class="service reveal">
-        <div class="service-num">02</div>
-        <div class="service-title">Workshop</div>
-        <div class="service-desc">Hands-on sessions where your team builds with AI tools directly on your own use cases, not toy demos.</div>
-      </div>
-      <div class="service reveal">
-        <div class="service-num">03</div>
-        <div class="service-title">Shipment</div>
-        <div class="service-desc">Custom tools and automations, scoped and delivered into your workflow — running, not just prototyped.</div>
-      </div>
-    </div>
-    <button class="services-cta reveal" onclick="copyEmail()">Get in touch →</button>
-  </div>
-
-  <div class="links-strip reveal">
-    <a href="https://www.linkedin.com/in/fabiomarchiano/" target="_blank" rel="noopener">LinkedIn</a>
-    <span class="links-sep">·</span>
-    <a href="https://github.com/fmarchiano" target="_blank" rel="noopener">GitHub</a>
-    <span class="links-sep">·</span>
-    <button onclick="copyEmail()">fabio.marchiano.phd@gmail.com</button>
   </div>
 
   <footer>
-    <span class="footer-copy">© 2026 Fabio Marchianò</span>
+    <span class="footer-copy">© 2026 Fabio Marchianò · P.IVA 02856570037</span>
     <div class="footer-socials">
       <a href="https://www.linkedin.com/in/fabiomarchiano/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/fmarchiano" target="_blank" rel="noopener">GitHub</a>
@@ -582,7 +453,7 @@ footer{
     <a class="pub-back" href="#" onclick="showPage('home');return false;">← Back</a>
   </div>
   <footer>
-    <span class="footer-copy">© 2026 Fabio Marchianò</span>
+    <span class="footer-copy">© 2026 Fabio Marchianò · P.IVA 02856570037</span>
     <div class="footer-socials">
       <a href="https://www.linkedin.com/in/fabiomarchiano/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/fmarchiano" target="_blank" rel="noopener">GitHub</a>
