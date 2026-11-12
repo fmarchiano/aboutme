@@ -5,7 +5,7 @@ Single-file personal site for Fabio Marchianò (PhD health biology: genomics and
 Live at: https://fmarchiano.github.io/masterclass/
 Single source of truth: `index.html` (~450 lines, all CSS + JS inline, zero build tools)
 
-Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Three pages: Home, Publications, Where I Live.
+Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Four pages: Home, Publications, Where I Live, Extra.
 
 ## Owner
 - Name: Fabio Marchianò
@@ -24,7 +24,7 @@ Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com —
 4. **Palette**: `--cyan:#00f5ff` · `--b:#0a0a0a` · `--b2:#111114` · `--w:#e8e4d8` · `--dim`/`--dim2` (translucent white). No per-page accents anymore — single page, single accent.
 5. **No i18n** — copy is English only. Do not reintroduce `data-i18n` / `T.en` machinery.
 6. **Canvas guards** — only canvases are the globe on `page-where` and the Viz object on `page-publications`; `showPage()` pauses each when leaving its page.
-7. **Routing** — `showPage(id)` toggles `.active` on `.page` divs. Currently `page-home`, `page-publications` and `page-where`. New pages must follow this pattern and get a nav link.
+7. **Routing** — `showPage(id)` toggles `.active` on `.page` divs. Currently `page-home`, `page-publications`, `page-where` and `page-extra`. New pages must follow this pattern and get a nav link.
 8. **No lorem ipsum** — all copy must come from `memory/content-bank.md`.
 9. **Email CTA** — use `<button onclick="copyEmail()">` (copies address, shows toast). No `mailto:` links, no Cal.com (removed).
 10. **Tone** — direct, dry, minimal. No corporate filler ("passionate", "leverage", "cutting-edge").
@@ -57,6 +57,7 @@ footer                  Shared footer, LinkedIn/GitHub/Email
 ```
 pic/about.png        Profile photo (About section)
 pic/about.jpg        Link-preview image (og:image)
+pic/spaceship.jpg    Extra page, The Spaceship card
 ```
 
 ---

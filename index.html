@@ -192,6 +192,23 @@ footer{
 }
 .pub-back:hover{color:var(--accent);}
 
+/* ── EXTRA ── */
+#page-extra .pub-wrap{max-width:1080px;}
+#page-extra .pub-heading{margin-bottom:2rem;}
+.extra-card{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:clamp(1.5rem,3vw,3rem);}
+.extra-title{font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:600;letter-spacing:-.01em;color:var(--cyan);line-height:1.2;}
+.extra-photo{width:100%;height:auto;display:block;margin:.8rem 0 1rem;}
+.extra-label{
+  font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:.8rem;
+}
+.extra-list{list-style:none;}
+.extra-list li{font-size:.85rem;font-weight:400;color:var(--w);line-height:1.5;padding:.45rem 0;border-bottom:1px solid rgba(232,228,216,.07);}
+.extra-list span{display:block;font-size:.75rem;font-weight:300;color:var(--dim);}
+.extra-list a{color:var(--w);text-decoration:none;transition:color .2s;}
+.extra-list a:hover{color:var(--accent);}
+@media(max-width:820px){.extra-card{grid-template-columns:1fr;}}
+
 /* ── PUBLICATIONS VIZ ── */
 .pub-toggle{
   position:fixed;top:6.2rem;right:clamp(1.5rem,5vw,5rem);z-index:10;
@@ -301,8 +318,8 @@ footer{
 .gm-right .gm-city-name{left:14px;}
 .gm-left .gm-city-name{right:14px;}
 @media(max-width:520px){
-  .nav-links{gap:.9rem;}
-  .nav-links a{font-size:.64rem;letter-spacing:.05em;}
+  .nav-links{gap:.7rem;}
+  .nav-links a{font-size:.6rem;letter-spacing:.04em;white-space:nowrap;}
   .nav-name{font-size:.82rem;}
 }
 
@@ -335,6 +352,7 @@ footer{
     <li><a href="#" onclick="showPage('home');return false;" id="nav-home" class="active">Home</a></li>
     <li><a href="#" onclick="showPage('publications');return false;" id="nav-publications">Publications</a></li>
     <li><a href="#" onclick="showPage('where');return false;" id="nav-where">Where I Live</a></li>
+    <li><a href="#" onclick="showPage('extra');return false;" id="nav-extra">Extra</a></li>
   </ul>
 </nav>
 
@@ -469,6 +487,56 @@ footer{
       <p class="pub-authors">Yin A et al. (Marchianò F co-author)</p>
       <p class="pub-journal">Nucleic Acids Research · 2020</p>
       <p class="pub-doi"><a href="https://doi.org/10.1093/nar/gkz1128" target="_blank" rel="noopener">doi.org/10.1093/nar/gkz1128</a></p>
+    </div>
+
+    <a class="pub-back" href="#" onclick="showPage('home');return false;">← Back</a>
+  </div>
+  <footer>
+    <span class="footer-copy">© 2026 Fabio Marchianò · P.IVA 02856570037</span>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/fabiomarchiano/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/fmarchiano" target="_blank" rel="noopener">GitHub</a>
+      <button onclick="copyEmail()">Email</button>
+    </div>
+  </footer>
+</div>
+
+<!-- ══ EXTRA ══ -->
+<div class="page" id="page-extra">
+  <div class="pub-wrap">
+    <h1 class="pub-heading reveal">Extra</h1>
+
+    <div class="pub-card extra-card reveal">
+      <div>
+        <h2 class="extra-title">The Spaceship</h2>
+        <img class="extra-photo" src="pic/spaceship.jpg" alt="Home studio: two monitors, microphone on a stand, KeyStep and mixer on a desk, Squier Jaguar and Höfner violin bass, VoiceLive 3 on the floor" loading="lazy" width="800" height="1067">
+        <p class="pub-authors">Home studio. Analog and digital instruments wired into one rig.</p>
+      </div>
+      <div>
+        <p class="extra-label">Rig</p>
+        <ul class="extra-list">
+          <li>Shure SM58<span>dynamic vocal mic</span></li>
+          <li>Rode NT1-A<span>condenser, studio vocals</span></li>
+          <li>Squier Jaguar<span>electric guitar</span></li>
+          <li>Höfner Violin Bass Junior<span>bass</span></li>
+          <li>Arturia KeyStep<span>MIDI keyboard, sequencer</span></li>
+          <li>Elektron Digitakt<span>sampler, drum machine</span></li>
+          <li>TC-Helicon VoiceLive 3<span>vocal + guitar effects, looper</span></li>
+          <li>MIDI splitter<span>sends KeyStep / Digitakt clock to the rest</span></li>
+          <li>Behringer Xenyx Q802USB<span>mixer</span></li>
+          <li>Focusrite Scarlett 4i4<span>audio interface</span></li>
+          <li>Ableton Live<span>DAW</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="extra-label">Original Music</p>
+        <ul class="extra-list">
+          <li><a href="https://open.spotify.com/artist/5CS0VzaDXiBr7sv1w5ASCl" target="_blank" rel="noopener">Fabio Darta Marchia<span>Spotify ↗</span></a></li>
+          <li><a href="https://open.spotify.com/artist/2A9ASYZf1ktVUhu5oMxguQ" target="_blank" rel="noopener">Fuorifuoco<span>Spotify ↗</span></a></li>
+          <li><a href="https://youtube.com/playlist?list=OLAK5uy_nvguoliPXP6C5fhdMYmWXcHkoQp98Bz_c" target="_blank" rel="noopener">Un uomo<span>YouTube ↗</span></a></li>
+          <li><a href="https://open.spotify.com/artist/0PXOs7jsj8CZtP83uEYFRT" target="_blank" rel="noopener">The Weird and the Eerie<span>Spotify ↗</span></a></li>
+        </ul>
+      </div>
     </div>
 
     <a class="pub-back" href="#" onclick="showPage('home');return false;">← Back</a>
