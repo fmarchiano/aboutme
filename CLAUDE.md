@@ -2,7 +2,7 @@
 
 ## What this project is
 Single-file personal site for Fabio Marchianò (PhD health biology: genomics and bioinformatics, bioinformatician, freelance AI/automation).
-Live at: https://fmarchiano.github.io/masterclass/
+Live at: https://fmarchiano.github.io/aboutme/
 Single source of truth: `index.html` (~450 lines, all CSS + JS inline, zero build tools)
 
 Minimalist dark/cream one-pager. No masterclass courses, no i18n, no Cal.com — that content was retired in the Sept 2026 redesign. Four pages: Home, Publications, Where I Live, Extra.
